@@ -1,0 +1,68 @@
+.body{
+    width: 1500px;
+    height: 750px;
+    background: #FFFFFF;
+}
+.card{
+    width: 761px;
+    height: 750px;
+}
+.img1{
+    width: 280px;
+    height: 74.57px;
+    margin-left:350px;
+    margin-top:150px;
+}
+.h1{
+    width: 236.32px;
+    height: 21.86px;
+    font-weight: 800;
+    font-size: 24px !important;
+    color: #323232;
+    text-align: left;
+    margin-left:350px;
+    padding-top:20px;
+}
+.a{
+    width: 280px;
+    height: 25px;
+    margin-left:350px !important;
+    margin-top:40px !important;
+    font-weight: 500;
+    font-size: 12px;
+    color: #6C7389;
+    border: 1px solid #E7E7E7;
+
+}
+.button{
+    width: 280px;
+    height: 36px;
+    margin-left:350px;
+    margin-top:55px;
+    background: linear-gradient(32.62deg, #0EC8E1 4.82%, #0866D5 104.82%) ;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 800;
+    text-align: center;
+    border-radius: 10px;
+    border: 0;
+}
+.b{
+    font-family: 'Mplus 1p';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    color: #BEC2C4;
+    padding-top: 170px;
+    margin-left:70px;
+    padding-bottom: 70px;
+}
+.card2{
+    width: 750px;
+    height: 750px;
+    background: linear-gradient(32.62deg, #0EC8E1 4.82%, #0866D5 104.82%) !important;
+}
+.img2{
+    width: 750px;
+    height: 750px;
+}
