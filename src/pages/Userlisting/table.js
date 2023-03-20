@@ -18,6 +18,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import Delete from './delete';
 import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 function CreateData(Name, BirthDate ,Age,Email, Mobile, Actions ){ 
 return {Name, BirthDate ,Age,Email, Mobile, Actions};
 }
@@ -43,17 +44,13 @@ const rows = [
     const [deleterow, setdeleterow] = useState(-1); // state for deleting index
     const [searchdata, setSearchdata] = useState("");
     const navigate = useNavigate();
-const [searchparams] = useSearchParams();
-console.log(searchparams.get("name"))
-console.log(searchparams.get("age"))
-console.log(searchparams.get("mobile"))
-console.log(searchparams.get("email"))
-console.log(searchparams.get("BirthDate"))
- useEffect(() => {
-if (searchparams.get("name")) {
- setdata([...data, CreateData(searchparams.get("name"), searchparams.get("BirthDate"), searchparams.get("age"), searchparams.get("email"), searchparams.get("mobile"))])
-}
- },[])
+    const location = useLocation();
+    console.log (location)
+    useEffect(() => {
+     if (location) {
+      setdata([...data, CreateData(location.state.name, location.state.BirthDate, location.state.age, location.state.email, location.state.mobile, )])
+     }
+    },[])
     useEffect(() => {
       console.log(searchdata)
     }, [searchdata])
@@ -163,3 +160,5 @@ if (searchparams.get("name")) {
     </>
     );
 };
+
+// https://vidya-work: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1@github.com/vidya-work/test3.git?

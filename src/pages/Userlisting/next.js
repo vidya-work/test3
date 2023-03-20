@@ -25,7 +25,11 @@ function Next() {
     </div>
     <div>
           <Button className={styles.button} onClick={() => {}}>Cancel</Button>
-          <Button className={styles.button} onClick= {() => {navigate({pathname: "/table", search:`?${createSearchParams({name, age, mobile, email, BirthDate}).toString()}`})}}>Submit</Button>
+          <Button className={styles.button} onClick= {() => {navigate("/table", {state:{name, age, mobile, email, BirthDate}})}}>Submit</Button>
+          <Link 
+          to="/table"
+          state={{name, age, mobile, email, BirthDate}
+        }></Link>
           </div>
           </div>
     </>
