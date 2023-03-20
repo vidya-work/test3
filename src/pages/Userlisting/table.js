@@ -47,10 +47,10 @@ const rows = [
     const location = useLocation();
     console.log (location)
     useEffect(() => {
-     if (location) {
+     if (location.state) {
       setdata([...data, CreateData(location.state.name, location.state.BirthDate, location.state.age, location.state.email, location.state.mobile, )])
      }
-    },[])
+    },[]);
     useEffect(() => {
       console.log(searchdata)
     }, [searchdata])
