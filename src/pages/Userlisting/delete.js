@@ -8,7 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 function Delete({handleClickDelete, open, deleterow}) {
-
+  
   return (
     <div>
       

@@ -1,5 +1,5 @@
 import styles from './form.module.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TextField from "@mui/material/TextField";
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -14,7 +14,21 @@ function Form({ open, handleClose, edit }) {
   const [mobile, setMobile] = useState(edit?.data?.Mobile || '')  // state for (edit data or empty string) 
   const [email, setEmail] = useState(edit?.data?.Email || '')  // state for (edit data or empty string) 
   const [BirthDate, setBirthDate] = useState(edit?.data?.BirthDate || '')  // state for (edit data or empty string) 
+  function getEditData(){
+    fetch('http://localhost:4000/user/'+ edit._id, {
+      method:'GET', // API for getById
+      headers: new Headers({'content-type': 'application/json'}),
+    })
+    .then((res)=>res.json())
+  .then((json)=>{
+    console.log(json)
+    
+  })
   
+}
+useEffect(()=>{
+  getEditData()
+},[]) 
   // fun for edit popup close
   const handleCloseEdit = () => {
     if (edit) { // condition for edit data on clicked row
@@ -27,7 +41,17 @@ function Form({ open, handleClose, edit }) {
       
     }
     else { // condition for no change data on clicked row
-      handleClose({ name, age, email, mobile, BirthDate }) // close popup with new data
+      handleClose({ name, age, email, mobile, BirthDate })// close popup with new data
+      fetch ('http://localhost:4000/user' , {
+        method:'POST', // API for add row or data
+        body: JSON.stringify({name, age, email,mobile, BirthDate}),
+        headers: new Headers({'content-type': 'application/json'}),
+      })
+      .then((res)=>res.json())
+      .then((json)=>{
+        console.log(json)
+      })
+
     }
     console.log(name, age, email, mobile, BirthDate)
   }

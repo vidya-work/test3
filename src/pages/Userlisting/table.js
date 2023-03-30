@@ -38,13 +38,14 @@ const rows = [
 ]
  export default function TableView(){
     const [open, setOpen]=useState(false); // state for add and edit popup open and close
-    const [data, setdata] = useState(rows); // state for table listing
+    const [data, setdata] = useState([]); // state for table listing
     const [edit, setedit] = useState(null); // state for edit data and edit index
     const [getopen, setgetopen] =useState(false); // state for delete popup open and close
     const [deleterow, setdeleterow] = useState(-1); // state for deleting index
     const [searchdata, setSearchdata] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
+
     console.log (location)
     useEffect(() => {
      if (location.state) {
@@ -54,6 +55,21 @@ const rows = [
     useEffect(() => {
       console.log(searchdata)
     }, [searchdata])
+    function getData(){
+      fetch('http://localhost:4000/user' , {
+        method:'GET', // API for user listing
+        headers: new Headers({'content-type': 'application/json'}),
+      })
+      .then((res)=>res.json())
+    .then((json)=>{
+      console.log(json)
+      setdata(json)
+    })
+    
+  }
+  useEffect(()=>{
+    getData()
+  },[]) 
     
     // fun for add popup open
     const handleClickOpen = () => {
@@ -76,28 +92,37 @@ const rows = [
       console.log(newdata)
       setedit(null)
     };
-
+    
+ 
     // fun for delete row
     const handleClickDelete = (index) => { 
       if (index?.index !== undefined) {
-        data.splice(index.index, 1); // remove an index from array
-        setdata([...data]) // data after remove index 
-        console.log(index)
+        fetch('http://localhost:4000/user/'+ index.index , {
+        method:'DELETE', // API for delete index  
+        headers: new Headers({'content-type': 'application/json'}),
+      })
+      .then((res)=>res.json())
+    .then((json)=>{
+      console.log(json)
+      console.log(index)
+    })
+    getData()
       }
       setgetopen(false);
       setdeleterow(-1)
     };
 
     // fun for edit popup open and data store in state (for edit)
-    const handleClickEdit =(row, index) => {
-      console.log(row, index)
-      setedit({data:row, index:index}) // store new data in state edit
+    const handleClickEdit =(_id, index) => {
+      console.log(_id)
+      setedit({_id, index}) // store new data in state edit
       setOpen(true) // state for edit popup open
+    
     }
 
     // fun for delete popup open
-   const handleClick = (index) => { 
-    setdeleterow(index)
+   const handleClick = (_id) => { 
+    setdeleterow(_id)
     setgetopen(true)
     
    };
@@ -135,16 +160,16 @@ const rows = [
           </TableRow>
         </TableHead>
         <TableBody>
-        {data.filter(row => row.Name.toLowerCase().includes(searchdata.toLowerCase()) || row.Age.toString().includes(searchdata)).map((row, index) => (
+        {data.filter(row => row.name.toLowerCase().includes(searchdata.toLowerCase()) || row.age.toString().includes(searchdata)).map((row, index) => (
             <StyledTableRow
               key={index}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-              <TableCell className={styles.b}align="right">{row.Name}</TableCell>
+              <TableCell className={styles.b}align="right">{row.name}</TableCell>
               <TableCell className={styles.b}align="right">{row.BirthDate}</TableCell>
-              <TableCell className={styles.b}align="right">{row.Age}</TableCell>
-              <TableCell className={styles.b}align="right">{row.Email}</TableCell>
-              <TableCell className={styles.b}align="right">{row.Mobile}</TableCell>
-              <TableCell className={styles.b}align="right" ><EditIcon onClick={(e) => {handleClickEdit(row,index); }}/> <DeleteIcon onClick={(e) =>{ handleClick (index)}}/></TableCell>
+              <TableCell className={styles.b}align="right">{row.age}</TableCell>
+              <TableCell className={styles.b}align="right">{row.email}</TableCell>
+              <TableCell className={styles.b}align="right">{row.mobile}</TableCell>
+              <TableCell className={styles.b}align="right" ><EditIcon onClick={(e) => {handleClickEdit(row._id); }}/> <DeleteIcon onClick={(e) =>{ handleClick (row._id)}}/></TableCell>
               
             </StyledTableRow>
           ))}          
