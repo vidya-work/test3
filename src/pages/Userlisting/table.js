@@ -19,8 +19,8 @@ import Delete from './delete';
 import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-function CreateData(Name, BirthDate ,Age,Email, Mobile, Actions ){ 
-return {Name, BirthDate ,Age,Email, Mobile, Actions};
+function CreateData(name, birthdate ,age,email, mobile, Actions ){ 
+return {name, birthdate ,age,email, mobile, Actions};
 }
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({ // style for table
@@ -49,7 +49,7 @@ const rows = [
     console.log (location)
     useEffect(() => {
      if (location.state) {
-      setdata([...data, CreateData(location.state.name, location.state.BirthDate, location.state.age, location.state.email, location.state.mobile, )])
+      setdata([...data, CreateData(location.state.name, location.state.birthdate, location.state.age, location.state.email, location.state.mobile, )])
      }
     },[]);
     useEffect(() => {
@@ -80,12 +80,12 @@ const rows = [
     const handleClose = (newdata,) =>{
       if (newdata) { // condition for edit list data
         if (newdata?.index !== undefined){ // condition for update list data
-          data[newdata.index]=CreateData(newdata.data.name, newdata.data.BirthDate, newdata.data.age, newdata.data.email, newdata.data.mobile, )
+          data[newdata.index]=CreateData(newdata.data.name, newdata.data.birthdate, newdata.data.age, newdata.data.email, newdata.data.mobile, )
           console.log(data)
           setdata(data)
         }
         else{ // condition for add new row
-        setdata([...data, CreateData(newdata.name, newdata.BirthDate, newdata.age, newdata.email, newdata.mobile, )])
+        setdata([...data, CreateData(newdata.name, newdata.birthdate, newdata.age, newdata.email, newdata.mobile, )])
         }
       }
       setOpen(false);
@@ -150,11 +150,11 @@ const rows = [
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead className={styles.a}>
           <TableRow className={styles.c}>
-            <TableCell className={styles.cell} align="right">Name</TableCell>
-            <TableCell className={styles.cell} align="right">BirthDate</TableCell>
-            <TableCell className={styles.cell} align="right">Age</TableCell>
-            <TableCell className={styles.cell} align="right">Email</TableCell>
-            <TableCell className={styles.cell} align="right">Mobile</TableCell>
+            <TableCell className={styles.cell} align="right">name</TableCell>
+            <TableCell className={styles.cell} align="right" >BirthDate</TableCell>
+            <TableCell className={styles.cell} align="right">age</TableCell>
+            <TableCell className={styles.cell} align="right">email</TableCell>
+            <TableCell className={styles.cell} align="right">mobile</TableCell>
             <TableCell className={styles.cell} align="right">Actions</TableCell>
 
           </TableRow>
@@ -165,7 +165,7 @@ const rows = [
               key={index}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell className={styles.b}align="right">{row.name}</TableCell>
-              <TableCell className={styles.b}align="right">{row.BirthDate}</TableCell>
+              <TableCell className={styles.b}align="right">{row.birthdate}</TableCell>
               <TableCell className={styles.b}align="right">{row.age}</TableCell>
               <TableCell className={styles.b}align="right">{row.email}</TableCell>
               <TableCell className={styles.b}align="right">{row.mobile}</TableCell>

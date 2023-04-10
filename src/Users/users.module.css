@@ -1,0 +1,19 @@
+.a{
+    background: #12BFE0;
+}
+.container{
+    width: 1290px;
+    height: 70vh;
+    float: right;
+    margin-top: 25px;
+    margin-right: 20px;
+    border: 1px solid #E7E7E7;
+}
+.TextField{
+    display: flex;
+    width: 30%;
+    margin-top: 10px !important;
+}
+.body{
+    width: 100%;
+}

@@ -10,41 +10,41 @@ function Sidebar(){
     return(
     <div className={styles.main}>  
   <div className={styles.a}>      
-    <img className={styles.img1} src={image}></img>
-    <h className={styles.h1}>Dashboard</h>
+    <img className={styles.img1} src={image} alt=""></img>
+    <h6 className={styles.h1}>Dashboard</h6>
     </div>
     <br></br>
     <div className={styles.b}>
-    <img className= {styles.img1} src={image1}></img>
-    <h className={styles.h1}>User Management</h>
+    <img className= {styles.img1} src={image1} alt=""></img>
+    <h6 className={styles.h1}>User Management</h6>
     </div>
     <br></br>
   <div className={styles.a}>      
-    <img className= {styles.img1} src={image2}></img>
-    <h className={styles.h1}>Messages History</h>
+    <img className= {styles.img1} src={image2} alt=""></img>
+    <h6 className={styles.h1}>Messages History</h6>
    </div>
      <br></br>  
   <div className={styles.a}>      
-    <img className= {styles.img1} src={image3}></img>
-    <h className={styles.h1}>Questions</h>
+    <img className= {styles.img1} src={image3} alt=""></img>
+    <h6 className={styles.h1}>Questions</h6>
     <div className={styles.c}>
-    <h className={styles.h4}>16</h>
+    <h6 className={styles.h4}>16</h6>
     </div>
    </div> 
     <br></br>
   <div className={styles.a}>      
-    <img className= {styles.img1} src={image4}></img>
-    <h className={styles.h1}>Answers</h>
+    <img className= {styles.img1} alt="" src={image4}></img>
+    <h6 className={styles.h1}>Answers</h6>
     <div className={styles.c}>
-    <h className={styles.h2}>16</h>
+    <h6 className={styles.h2}>16</h6>
     </div>
    </div>
     <br></br>
   <div className={styles.a}>      
-    <img className= {styles.img1} src={image5}></img>
-    <h className={styles.h1}>Abuse Reports</h>
+    <img className= {styles.img1} src={image5} alt=""></img>
+    <h6 className={styles.h1}>Abuse Reports</h6>
     <div className={styles.c}>
-    <h className={styles.h3}>16</h>
+    <h6 className={styles.h3}>16</h6>
     </div>
    </div>
     </div>

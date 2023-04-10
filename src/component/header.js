@@ -6,9 +6,9 @@ function Header (){
     return(
     <div className={styles.body}>
         <div className={styles.header}>
-        <img className={styles.img1} src={image}></img>
-        <img className={styles.img2} src={image2}></img>
-        <h className={styles.h1}>Julietta Craig</h>
+        <img className={styles.img1} src={image} alt=""></img>
+        <img className={styles.img2} src={image2} alt=""></img>
+        <h6 className={styles.h2}>Julietta Craig</h6>
         <ExpandMoreIcon className={styles.icon}/>
         </div>
     </div>
